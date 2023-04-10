@@ -60,11 +60,6 @@ function fe_solver(number_of_elements::Integer,
 end
 
 
-function parameterize_mobility(params::Vector{<:Real})
-    (x) -> x[1] ^ params[1] + params[2]
-end
-
-
 export fe_solver
 
 end
