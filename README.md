@@ -4,6 +4,7 @@
 
 The weak form of the steady-state pressure diffusivity equation is
 
+$$
 \begin{aligned}
 0 = \int_{\partial \Omega} \lambda(\vec{x}) \delta p(\vec{x}) \nabla p(\vec{x}) \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
 \cdot \nabla p(\vec{x})\textrm{d}V \\
@@ -11,6 +12,7 @@ The weak form of the steady-state pressure diffusivity equation is
 \cdot \nabla p(\vec{x})\textrm{d}V \\
  = l(\delta p) - a(p, \delta p)
 \end{aligned}
+$$
 
 where $\lambda$ is a mobility function, $\delta p$ is a "test function" and $p$ is a "trial function" and unknown pressure field variable.  Your assignment is to use [Gripap.jl](https://gridap.github.io/Gridap.jl/stable/) to solve this equation for a one-dimensional discretization.  Specifically, you should
 complete the function `fe_solver(number_of_elements::Integer, λ::Function, left_bc::Real, right_bc::Real)` in [assignment17.jl](src/assignment17.jl). `number_of_elements` are the number of finite elements to use in the discretization, `λ` is the mobility (defined as a function), `left_bc` and `right_bc` are the constant left and right Dirchelet boundary conditions respectively.  There are no Neumann boundary conditions, i.e. $\vec{v} = \lambda \nabla p = 0$.  The function should return the `Gridap` solver object (i.e. the thing returned by the `solve` function).  
