@@ -6,11 +6,11 @@ The weak form of the steady-state pressure diffusivity equation is
 
 $$
 \begin{aligned}
-0 =& \int_{\partial \Omega} \lambda(\vec{x}) \delta p(\vec{x}) \nabla p(\vec{x}) \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
+0 &= \int_{\partial \Omega} \lambda(\vec{x}) \delta p(\vec{x}) \nabla p(\vec{x}) \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
 \cdot \nabla p(\vec{x})\textrm{d}V \\
-  =& \int_{\partial \Omega} \delta p(\vec{x}) \vec{v} \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
+  &= \int_{\partial \Omega} \delta p(\vec{x}) \vec{v} \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
 \cdot \nabla p(\vec{x})\textrm{d}V \\
- =& l(\delta p) - a(p, \delta p)
+ &= l(\delta p) - a(p, \delta p)
 \end{aligned}
 $$
 
