@@ -1,23 +1,20 @@
-# Homework Assignment 17
+# Homework Assignment 18
 
-![Assignment 17](https://github.com/PGE383-HPC/assignment17-solution/actions/workflows/main.yml/badge.svg)
+![Assignment 18](https://github.com/PGE383-HPC/assignment18-solution/actions/workflows/main.yml/badge.svg)
 
-The weak form of the steady-state pressure diffusivity equation is
+During a single-phase one-dimensional core flooding experiment, pressure readings were observed at 99 evenly spaced points in the interior of a core. The pressure as a function of $x$ observations are stored in the data file [data.csv](./data/data.csv') and shown in the figure below
+
+[!img]("./images/data.png")
+
+You job is find the unknown parameters $\theta_1$ and $\theta_2$ from a proposed mobility function of the form
 
 $$
-\begin{aligned}
-0 &= \int_{\partial \Omega} \lambda(\vec{x}) \delta p(\vec{x}) \nabla p(\vec{x}) \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
-\cdot \nabla p(\vec{x})\textrm{d}V \\
-  &= \int_{\partial \Omega} \delta p(\vec{x}) \vec{v} \textrm{d}S - \int_{\Omega}  \lambda(\vec{x}) \nabla \delta p(\vec{x}) 
-\cdot \nabla p(\vec{x})\textrm{d}V \\
- &= l(\delta p) - a(p, \delta p)
-\end{aligned}
+\lambda(x) = x^{\theta_1} + \theta_2
 $$
 
-where $\lambda$ is a mobility function, $\delta p$ is a "test function" and $p$ is a "trial function" and unknown pressure field variable.  Your assignment is to use [Gripap.jl](https://gridap.github.io/Gridap.jl/stable/) to solve this equation for a one-dimensional discretization.  Specifically, you should
-complete the function `fe_solver(number_of_elements::Integer, λ::Function, left_bc::Real, right_bc::Real)` in [assignment17.jl](src/assignment17.jl). `number_of_elements` are the number of finite elements to use in the discretization, `λ` is the mobility (defined as a function), `left_bc` and `right_bc` are the constant left and right Dirchelet boundary conditions respectively.  There are no Neumann boundary conditions, i.e. $\vec{v} = \lambda \nabla p = 0$.  The function should return the `Gridap` solver object (i.e. the thing returned by the `solve` function).  
+You can use your [Gripap.jl](https://gridap.github.io/Gridap.jl/stable/) finite element solution from [Assignment 17](https://github.com/PGE383-HPC/assignment17)) to solve the forward problem.
 
-You should use uniformly defined elements on the one-dimensional domain $(0, 1)$, the reference element should use linear Lagrange interpolation functions, the quadrature should use 2-point Gauss integration.
+A useful package for solving the inverse problem is [Optimisers.jl](https://fluxml.ai/Optimisers.jl/dev/).  You'll need to be able to compute the gradient of a loss function with respect to the unknown parameters $\theta_1$ and $\theta_2$.  Unfortunately, you cannot (currently) use automatic differentiation with Gridap; however, you can always use finite difference approximations to compute gradients.  A nice package for computing finite differences in Julia is [FiniteDifferences.jl](https://juliadiff.org/FiniteDifferences.jl/latest/).
 
 
 ## Testing

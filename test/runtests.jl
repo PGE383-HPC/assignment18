@@ -14,12 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 using Test, Pkg
-using assignment17
+using assignment18
 
-@testset "Test assignment17" begin
-    ans = fe_solver(100, x->x[1]^3 + 0.001)
-    @test all(isapprox.(ans.free_values[1:13], [14.16908713140917, 13.341071592870716, 12.523240747303213, 11.726957540780601,
-                          10.966032297651303, 10.254304105137516, 9.603083265327149, 9.019328675821981, 
-                           8.50510092837698, 8.05820183075204, 7.673468306017411, 7.344148604459021, 7.0630084448622386], atol=1.0e-5))
+@testset "Test assignment18" begin
+    datafile = realpath(dirname(@__FILE__)*"/../data/data.csv")
+    ans = train(datafile)
+    @test all(isapprox.(ans, [2.376, 0.002], atol=0.01))
 end
 
