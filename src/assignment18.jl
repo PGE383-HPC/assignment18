@@ -101,19 +101,11 @@ end
 loss(θ, data) = sum(abs2, predict(θ) - data)
 
 function train(filename::String, nepochs::Integer=5000, tolerance::Real= 5, θ::Vector{<:Real}=[1.0, 0.1])
-
-    opt = Optimisers.Adam(0.01)
-    st_opt = Optimisers.setup(opt, θ)
-
-    data = read_data(filename)[:, 2]
-
-    for _ in 1:nepochs
-        gs = grad(central_fdm(2, 1), x -> loss(x, data), θ)[1]
-        st_opt, θ = Optimisers.update(st_opt, θ, gs)
-        if loss(θ, data) < 5
-            break
-        end
-    end
+    #########################
+    ##### ADD CODE HERE #####
+    #########################
+    
+    # Return the optimized value of θ
     θ
 end
 
