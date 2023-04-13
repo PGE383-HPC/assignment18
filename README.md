@@ -1,6 +1,6 @@
 # Homework Assignment 18
 
-![Assignment 18](https://github.com/PGE383-HPC/assignment18-solution/actions/workflows/main.yml/badge.svg)
+![Assignment 18](https://github.com/PGE383-HPC/assignment18/actions/workflows/main.yml/badge.svg)
 
 During a single-phase one-dimensional core flooding experiment, pressure readings were observed at 99 evenly spaced points in the interior of a core. The pressure as a function of $x$ observations are stored in the data file [data.csv](./data/data.csv) and shown in the figure below
 
