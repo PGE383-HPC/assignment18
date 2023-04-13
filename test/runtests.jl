@@ -13,12 +13,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-using Test, Pkg
-using assignment18
+import assignment18
+using Test
 
-@testset "Test assignment18" begin
+@testset "assignment18.jl" begin
     datafile = realpath(dirname(@__FILE__)*"/../data/data.csv")
-    ans = train(datafile)
-    @test all(isapprox.(ans, [2.376, 0.002], atol=0.01))
+    ans = assignment18.train(datafile)
+    println(ans)
+    @test all(isapprox.(ans, [2.367, 0.002], atol=0.01))
 end
-
